@@ -3,16 +3,18 @@
     <head>
         <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
         <meta charset="utf-8" />
-        <title>交易所K线图-BitZ</title>
+        <title>交易所K线图-BINANCE</title>
     </head>
     <body>	
 <div id="kline_container" style="width: 100%;height:560px;"></div>
         <div>
-            BitZ交易对: 
+            BINANCE交易对: 
             <select name="" id="symbol-list">
-                <option value="BITZTRXETH">TRX/ETH</option>
-				<option value="BITZEOSBTC">EOS/BTC</option>
-				<option value="BITZDASHBTC">DASH/BTC</option>
+                <option value="BINANCEQTUMETH">QTUM/ETH</option>
+				<option value="OKEXEOSETH">EOS/ETH</option>
+				<option value="OKEXNEOETH">ONT/ETH</option>
+				<option value="OKEXIOTABTC">BTS/BTC</option>
+				<option value="OKEXOKBBTC">BNB/BTC</option>
             </select>
         </div>
 <!-- AICoin Widget Begin -->
@@ -31,20 +33,20 @@
 		    "default_open_tools": false,
 		    "hide_market_name": false,
 		    "container": "kline_container",
-		    "lang": "zh",
+		    "lang": "zh_TW",
 		    "title": "实时走势图表"
 		})
 	}
 	
 	new AICoin.chart({
-	    "symbol": "BITZTRXETH",
+	    "symbol": "BINANCEQTUMETH",
 	    "default_step": "86400",
 	    "default_theme": "light",
 	    "disable_theme_change": true,
 	    "default_open_tools": false,
 	    "hide_market_name": false,
 	    "container": "kline_container",
-	    "lang": "zh",
+	    "lang": "zh_TW",
 	    "title": "实时走势图表"
 	})
 </script>
