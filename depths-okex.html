@@ -1,0 +1,104 @@
+<!DOCTYPE html>
+<html>
+	<head>
+		<meta charset="utf-8">
+		<title>OKB-BTC OKex - 買賣盤口</title>
+		<script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+	<style type="text/css" >
+		
+.orders {
+   width: 284px;
+}
+		.list-wrap {
+    padding: 0 0 8px;
+    border-bottom: 1px solid #e9eff2;
+}
+		 .list-wrap .single-list {
+    padding: 0 8px;
+    height: 100px;
+}
+
+.asks {
+    color: #ea4237;
+}
+.bids {
+    color: #32a853;
+}
+
+.list-wrap .weight {
+    font-size: 18px;
+    text-align: center;
+    margin: 4px 0;
+    font-family: Open Sans,Arial,Microsoft YaHei,Helvetica Neue,Helvetica,sans-serif;
+    font-weight: 600;
+}
+
+	</style>
+	</head>
+	<body>
+	<div class="orders">
+		<h3><span>OKB-BTC - 買賣盤口</span></h3>
+	<div class="list-wrap">
+		<div class="single-list asks">
+			<table>
+				<tr><td>賣<b>5</b></td><td>--</td></tr>
+				<tr><td>賣<b>4</b></td><td>--</td></tr>
+				<tr><td>賣<b>3</b></td><td>--</td></tr>
+				<tr><td>賣<b>2</b></td><td>--</td></tr>
+				<tr><td>賣<b>1</b></td><td>--</td></tr>
+			</table>
+		</div>
+		<div class="weight">&nbsp;&nbsp;</div>
+		<div class="single-list bids">
+			<table>
+				<tr><td>買<b>1</b></td><td>--</td></tr>
+				<tr><td>買<b>2</b></td><td>--</td></tr>
+				<tr><td>買<b>3</b></td><td>--</td></tr>
+				<tr><td>買<b>4</b></td><td>--</td></tr>
+				<tr><td>買<b>5</b></td><td>--</td></tr>
+			</table>
+		</div>
+	</div>
+	</div>
+	<script>
+		  (function poll() {
+                setTimeout(function() {
+                           $.ajax({
+                                  url: "http://14.36.1.154/okex-api/api/spot/v3/instruments/OKB-BTC/book?size=5",
+                                  headers: {
+                                  'Content-Type': 'application/x-www-form-urlencoded'
+                                  },
+                                  type: "GET",
+                                  success: function(data) {
+ 
+                                  // check if null return (no results from API)
+                                  if (data == null) {
+                                        console.log('no data!');
+                                  } else {					  
+									  let asks = data["asks"].reverse();
+									  let html = '<table><tbody>';
+									  for(var i = 5; i--;) {
+										  html += '<tr><td>賣<b>'+(i+1)+'</b>'+asks[i][0]+'</td><td>'+asks[i][1]+'</td></tr>';
+									  }
+									  html += '</tbody></table>';
+									  $('.asks').html(html);
+									  
+									  let bids = data["bids"];
+									  html = '<table><tbody>';
+									  for (var i = 0; i < 5; i ++) {
+									  	html += '<tr><td>買<b>'+(i+1)+'</b>'+bids[i][0]+'</td><td>'+bids[i][1]+'</td></tr>';
+									  }
+									  html += '</tbody></table>';
+									  $('.bids').html(html);
+                                  }
+ 
+                                  },
+                                  dataType: "json",
+                                  complete: poll,
+                                  timeout: 2000
+                                  })
+                           }, 3000);
+                })();
+	</script>
+	</body>
+</html>
