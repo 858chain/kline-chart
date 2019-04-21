@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+        <meta charset="utf-8" />
+        <title>交易所K线图-BitZ</title>
+		<script src="./charting_library/charting_library.min.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/bitz-datafees.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/TVjsApi.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+    </head>
+    <body>
+        <div id="tv_chart_container" style="height: 530px">
+        </div>
+        <div>
+            BitZ交易对: 
+            <select name="" id="symbol-list">
+                <option value="trx_eth">TRX/ETH</option>
+				<option value="usc_eth">USC/ETH</option>
+				<option value="bz_eth">BZ/ETH</option>
+				<option value="eos_btc">EOS/BTC</option>
+				<option value="dash_btc">DASH/BTC</option>
+            </select>
+        </div>
+        <script>
+			var _BitZDatafeed = new BitZDatafeed({ debug: true });
+            var _TVjsApi = new TVjsApi('trx_eth',_BitZDatafeed);
+            _TVjsApi.init();
+            var $select = document.querySelector('#symbol-list');
+            $select.onchange = function(){
+                var symbol = this.value;
+                _TVjsApi.symbol = symbol;
+                _TVjsApi.widgets.chart().setSymbol(symbol.toLocaleUpperCase());
+            }
+        </script>
+    </body>
+
+</html>

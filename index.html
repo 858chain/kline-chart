@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+    <head>
+        <meta name="viewport" content="maximum-scale=1.0,minimum-scale=1.0,user-scalable=0,width=device-width,initial-scale=1.0"/>
+        <meta charset="utf-8" />
+        <title>交易所K线图-BINANCE</title>
+    </head>
+
+    <body>
+        <div id="tv_chart_container" style="height: 530px">
+        </div>
+        <div>
+            BINANCE交易对: 
+            <select name="" id="symbol-list">
+                <option value="QTUMETH">QTUM/ETH</option>
+				<option value="EOSETH">EOS/ETH</option>
+				<option value="ONTETH">ONT/ETH</option>
+				<option value="BTSBTC">BTS/BTC</option>
+				<option value="BNBBTC">BNB/BTC</option>
+            </select>
+        </div>
+        <script src="./charting_library/charting_library.min.js" type="text/javascript" charset="utf-8"></script>
+        <script src="./js/datafees.js" type="text/javascript" charset="utf-8"></script>
+        <script src="./js/TVjsApi.js" type="text/javascript" charset="utf-8"></script>
+		<script src="./js/jquery.js" type="text/javascript" charset="utf-8"></script>
+        <script>
+			var _BinanceDatafeed = new BinanceDatafeed({ debug: true });
+            var _TVjsApi = new TVjsApi('QTUMETH', _BinanceDatafeed);
+            _TVjsApi.init();
+            var $select = document.querySelector('#symbol-list');
+            $select.onchange = function(){
+                var symbol = this.value;
+                _TVjsApi.symbol = symbol;
+                _TVjsApi.widgets.chart().setSymbol(symbol.toLocaleUpperCase());
+            }
+        </script>
+    </body>
+
+</html>
