@@ -6,7 +6,7 @@
         <title>交易所K线图-UPbit</title>
     </head>
     <body>	
-<div id="kline_container" style="width: 100%;height:560px;"></div>
+<div id="kline_container" style="width: 100%;height:300px;"></div>
         <div>
             UPbit交易对: 
             <select name="" id="symbol-list">
@@ -27,29 +27,35 @@
 	    var symbol = this.value;
 	    new AICoin.chart({
 		    "symbol": symbol,
-		    "default_step": "3600",
+		    "default_step": "86400",
 		    "default_theme": "light",
 		    "disable_theme_change": true,
 		    "disable_tool_change": true,
 		    "hide_market_name": true,
 		    "container": "kline_container",
-		    "lang": "zh-Hant",
+		    "lang": "en",
 		    "title": "实时走势图表",
-			"hide_logo": true
+			"hide_logo": true,
+			"hide_indicator_button": true,
+			"hide_setting_button": true,
+			"hide_bottom_buttons": true
 		})
 	}
 	
 	new AICoin.chart({
 	    "symbol": "UPBITXMRETH",
-		    "default_step": "3600",
+		    "default_step": "86400",
 		    "default_theme": "light",
 		    "disable_theme_change": true,
 		    "disable_tool_change": true,
 		    "hide_market_name": true,
 		    "container": "kline_container",
-		    "lang": "zh-Hant",
+		    "lang": "en",
 		    "title": "实时走势图表",
-			"hide_logo": true
+			"hide_logo": true,
+			"hide_indicator_button": true,
+			"hide_setting_button": true,
+			"hide_bottom_buttons": true
 	})
 </script>
 <!-- AICoin Widget End -->
