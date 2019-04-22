@@ -27,27 +27,29 @@
 	    var symbol = this.value;
 	    new AICoin.chart({
 		    "symbol": symbol,
-		    "default_step": "86400",
+		    "default_step": "3600",
 		    "default_theme": "light",
 		    "disable_theme_change": true,
-		    "default_open_tools": false,
-		    "hide_market_name": false,
+		    "disable_tool_change": true,
+		    "hide_market_name": true,
 		    "container": "kline_container",
 		    "lang": "zh-Hant",
-		    "title": "实时走势图表"
+		    "title": "实时走势图表",
+			"hide_logo": true
 		})
 	}
 	
 	new AICoin.chart({
 	    "symbol": "BINANCEQTUMETH",
-	    "default_step": "86400",
+	    "default_step": "3600",
 	    "default_theme": "light",
 	    "disable_theme_change": true,
-	    "default_open_tools": false,
-	    "hide_market_name": false,
+	    "disable_tool_change": true,
+	    "hide_market_name": true,
 	    "container": "kline_container",
 	    "lang": "zh-Hant",
-	    "title": "实时走势图表"
+	    "title": "实时走势图表",
+		"hide_logo": true
 	})
 </script>
 <!-- AICoin Widget End -->
